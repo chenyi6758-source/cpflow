@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cpflow"
+version = "0.1.0"
+description = "Continuation power flow for pandapower networks: P-V curves through the nose point, voltage-stability margin (lambda_max), weakest-bus ranking and N-1 margin ranking"
+readme = "README.md"
+license = { text = "BSD-3-Clause" }
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "pandapower>=2.14",
+    "scipy",
+]
+authors = [{ name = "ChenYi-Nnergy" }]
+keywords = ["power-flow", "continuation-power-flow", "voltage-stability", "P-V-curve", "pandapower", "N-1"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+plot = ["matplotlib"]
+
+[project.scripts]
+cpflow = "cpflow.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
